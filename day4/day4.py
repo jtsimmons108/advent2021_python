@@ -1,4 +1,3 @@
-
 with open('day4/day4.in') as f:
     data = f.read().split('\n\n')
 
