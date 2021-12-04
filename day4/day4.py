@@ -28,9 +28,9 @@ for call in calls:
                 break
     for i, board in enumerate(boards):
         if check_board(board):
-            score = sum(map(lambda row: sum([int(el) for el in row if el.isdigit()]), board))
+            score = sum(map(lambda row: sum(map(int, filter(lambda e: e.isdigit(), row))), board))
             scores.append(score * int(call))
-            del boards[i]
+            boards.pop(i)
 
 print('Part 1:', scores[0])
 print('Part 2:', scores[-1])
