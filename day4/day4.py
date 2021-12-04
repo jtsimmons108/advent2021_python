@@ -1,14 +1,9 @@
 
 with open('day4/day4.in') as f:
-    data = [l for l in f.read().split('\n') if l != '']
+    data = f.read().split('\n\n')
 
 calls = data[0].split(',')
-
-boards = []
-for i, line in enumerate(data[1:]):
-    if i % 5 == 0:
-        boards.append([])
-    boards[-1].append(line.split())
+boards = [[row.split() for row in board.split('\n')] for board in data[1:]]
 
 def check_board(board):
     for row in board:
