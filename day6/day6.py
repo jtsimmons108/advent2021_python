@@ -1,12 +1,11 @@
 with open('day6/day6.in') as f:
     data = [int(n) for n in f.read().split(',')]
 
+added = [data.count(i) for i in range(8)]
+original = sum(added)
 
-days = [data.count(i) for i in range(8)]
-original = sum(days)
+while len(added) < 256:
+    added.append(added[-7] + (added[-9] if len(added) >= 9 else 0))
 
-while len(days) < 256:
-    days.append(days[-7] + (days[-9] if len(days) >= 9 else 0))
-
-print('Part 1:',sum(days[:80]) + original)
-print('Part 2:',sum(days[:256]) + original)
+print('Part 1:',sum(added[:80]) + original)
+print('Part 2:',sum(added[:256]) + original)
