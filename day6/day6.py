@@ -2,16 +2,11 @@ with open('day6/day6.in') as f:
     data = f.read().split(',')
     data = [int(n) for n in data]
 
-for target in [80, 256]:
-    counts = {i: data.count(i) for i in range(9)}
-    for _ in range(target):
-        next_ = {i: 0 for i in range(9)}
-        for day, count in counts.items():
-            if day == 0:
-                next_[8] = count
-                next_[6] += count
-            else:
-                next_[day - 1] += count
-        counts = next_
+fishes = [0] + [data.count(i) for i in range(8)]
 
-    print('Day', target, ':', sum(counts.values()))
+while len(fishes) < 256 + 1:
+    fishes.append(fishes[-7] + fishes[-9])
+fishes.pop(0)
+
+print('Part 1:', sum(fishes[:80]))
+print('Part 2:', sum(fishes[:256]))
