@@ -1,12 +1,12 @@
 with open('day6/day6.in') as f:
-    data = f.read().split(',')
-    data = [int(n) for n in data]
+    data = [int(n) for n in f.read().split(',')]
 
-fishes = [0] + [data.count(i) for i in range(8)]
 
-while len(fishes) < 256 + 1:
-    fishes.append(fishes[-7] + fishes[-9])
-fishes.pop(0)
+days = [data.count(i) for i in range(8)]
+original = sum(days)
 
-print('Part 1:', sum(fishes[:80]))
-print('Part 2:', sum(fishes[:256]))
+while len(days) < 256:
+    days.append(days[-7] + (days[-9] if len(days) >= 9 else 0))
+
+print('Part 1:',sum(days[:80]) + original)
+print('Part 2:',sum(days[:256]) + original)
