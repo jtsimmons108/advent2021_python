@@ -22,7 +22,8 @@ for call in calls:
                 break
     for i, board in enumerate(boards):
         if check_board(board):
-            score = sum(map(lambda row: sum(map(int, filter(lambda e: e.isdigit(), row))), board))
+            score = sum(map(lambda row: \
+                sum(map(int, filter(lambda e: e.isdigit(), row))), board))
             scores.append(score * int(call))
             boards.pop(i)
 
