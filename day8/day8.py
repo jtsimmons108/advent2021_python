@@ -8,7 +8,7 @@ for line in data:
     in_wires, out_wires = [each.split() for each in line.split(' | ')]
     one, seven, four, *in_wires, eight = \
             [set(w) for w in sorted(in_wires, key = len)]
-    
+            
     for wire in in_wires[:3]:
         if len(wire & seven) == 3:
             three = wire
