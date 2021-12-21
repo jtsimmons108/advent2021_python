@@ -1,4 +1,4 @@
-with open('day13/day13.in') as f:
+with open('day13/day13.test') as f:
     points, folds = [groups.split('\n') for groups in f.read().split('\n\n')]
 
 marks = set()
